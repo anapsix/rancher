@@ -4,5 +4,5 @@ dist
 *.py[c-o]
 __pycache__
 .tox
-server/target
+#server/target
 MANIFEST
