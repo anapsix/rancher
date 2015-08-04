@@ -20,7 +20,7 @@ unpack_jar()
 {
     unzip /usr/share/cattle/cattle.jar
     mkdir -p res && cd res
-    unpack200 ../WEB-INF/lib/cattle-resources-*.jar.pack resources.jar
+    /usr/lib/jvm/java-1.7-openjdk/bin/unpack200 ../WEB-INF/lib/cattle-resources-*.jar.pack resources.jar
     unzip resources.jar
 }
 

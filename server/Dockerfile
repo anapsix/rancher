@@ -1,12 +1,9 @@
-FROM ubuntu:14.04.2
-
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends openjdk-7-jre-headless \
-                    curl \
-                    mysql-server \
-                    xz-utils \
-                    keychain \
-                    unzip
+FROM alpine
+RUN apk upgrade --update && \
+    apk add curl mysql xz bash unzip openjdk7-jre-base tar unzip && \
+    curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
+    apk add --allow-untrusted /tmp/glibc-2.21-r2.apk && \
+    rm /tmp/glibc-2.21-r2.apk
 
 ENV CATTLE_HOME /var/lib/cattle
 ENV DEFAULT_CATTLE_API_UI_INDEX //releases.rancher.com/ui/0.38.0
